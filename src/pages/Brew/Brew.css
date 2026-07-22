@@ -1,0 +1,2085 @@
+﻿    /* ==========================================================================
+       DESIGN SYSTEM & CSS VARIABLES
+       ========================================================================== */
+    .page-brew {
+      /* "Estate & Roast Curve" palette — derived from the shade-grown coffee
+         estates of Coorg & Chikmagalur (canopy green, misty parchment) and the
+         literal colour of a ripe coffee cherry (the accent), rather than the
+         generic cream+brown "coffee" default. */
+      --bg: #EDEFE9;             /* Shade-canopy mist — misty parchment, not cream */
+      --primary: #1F3B2C;        /* Estate canopy green (deep shade-grown forest) */
+      --accent: #B8442F;         /* Ripe coffee cherry red */
+      --accent-hover: #93341F;   /* Deeper cherry hover */
+      --card: #FFFCF6;           /* Card background */
+      --text-secondary: #5B6B5D; /* Muted moss-green secondary text (~4.9:1 on --bg) */
+      --border: rgba(31, 59, 44, 0.12); /* Soft canopy-green border */
+      --border-focus: rgba(184, 68, 47, 0.4);
+      --error: #C4283C;          /* Crimson warning (kept distinct from cherry accent) */
+      --success: #2E7D32;        /* Premium success green */
+      --font-heading: 'Fraunces', serif;
+      --font-body: 'Work Sans', sans-serif;
+
+      --shadow-sm: 0 2px 8px rgba(31, 59, 44, 0.06);
+      --shadow-md: 0 8px 24px rgba(31, 59, 44, 0.08);
+      --shadow-lg: 0 16px 40px rgba(31, 59, 44, 0.10);
+      /* Warm card shadow: blends the cherry accent into the drop shadow so cards read as
+         sitting on the estate-green background with physical, sun-warmed presence rather
+         than a flat, generic grey elevation. */
+      --shadow-card: 0 4px 12px rgba(184, 68, 47, 0.05), 0 14px 32px rgba(31, 59, 44, 0.09);
+      --shadow-card-hover: 0 8px 20px rgba(184, 68, 47, 0.08), 0 22px 48px rgba(31, 59, 44, 0.13);
+
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Respect reduced-motion preferences: calm the reveal transitions and the
+       infinite loyalty-badge pulse for users who have asked for less motion. */
+    @media (prefers-reduced-motion: reduce) {
+      .page-brew .reveal {
+        transition: opacity 0.01ms !important;
+        transform: none !important;
+      }
+      .page-brew .loyalty-coffees-badge,
+.page-brew .map-pin {
+        animation: none !important;
+      }
+      .page-brew *,
+.page-brew *::before,
+.page-brew *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Reset & Base Rules */
+    .page-brew *,
+.page-brew *::before,
+.page-brew *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-brew {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+    }
+
+    .page-brew {
+      font-family: var(--font-body);
+      color: var(--primary);
+      background-color: var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Scrollbar Style */
+    .page-brew ::-webkit-scrollbar {
+      width: 8px;
+    }
+    .page-brew ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    .page-brew ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+    .page-brew ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-secondary);
+    }
+
+    /* Typographic Hierarchy */
+    .page-brew h1,
+.page-brew h2,
+.page-brew h3,
+.page-brew h4,
+.page-brew h5,
+.page-brew h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .page-brew a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    .page-brew .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+
+    .page-brew button,
+.page-brew input,
+.page-brew select,
+.page-brew textarea {
+      font-family: inherit;
+      color: inherit;
+      outline: none;
+    }
+
+    /* Global visible focus ring for keyboard users — restores what the blanket
+       `outline: none` above strips, without adding a ring for mouse/touch clicks. */
+    .page-brew .btn:focus-visible,
+.page-brew .tab-btn:focus-visible,
+.page-brew .cart-toggle-btn:focus-visible,
+.page-brew .mobile-menu-btn:focus-visible,
+.page-brew .stepper-btn:focus-visible,
+.page-brew .guest-stepper-btn:focus-visible,
+.page-brew .btn-close-cart:focus-visible,
+.page-brew .btn-close-lightbox:focus-visible,
+.page-brew .btn-add-order:focus-visible,
+.page-brew .nav-link:focus-visible,
+.page-brew .gallery-card:focus-visible,
+.page-brew a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* Button Utilities */
+    .page-brew .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .page-brew .btn-primary {
+      background-color: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .page-brew .btn-primary:hover {
+      background-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .page-brew .btn-accent {
+      background-color: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .page-brew .btn-accent:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .page-brew .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .page-brew .btn-outline:hover {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    /* Animation Reveal Classes */
+    .page-brew .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .page-brew .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section Spacing */
+    .page-brew .section-spacing {
+      padding: 100px 0;
+    }
+
+    .page-brew .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 60px auto;
+    }
+
+    .page-brew .section-eyebrow {
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      font-weight: 700; /* bumped from 600 for extra contrast margin at small size */
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .page-brew .section-title {
+      font-size: clamp(32px, 5vw, 48px);
+      color: var(--primary);
+      line-height: 1.15;
+    }
+
+    /* ==========================================================================
+       NAVIGATION
+       ========================================================================== */
+    .page-brew .header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: var(--bg);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .page-brew .header.scrolled {
+      background-color: rgba(237, 239, 233, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .page-brew .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .page-brew .logo {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+    }
+
+    .page-brew .nav-menu {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .page-brew .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      position: relative;
+    }
+
+    .page-brew .nav-link:hover,
+.page-brew .nav-link.active {
+      color: var(--primary);
+    }
+
+    .page-brew .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: var(--transition);
+    }
+
+    .page-brew .nav-link:hover::after,
+.page-brew .nav-link.active::after {
+      width: 100%;
+    }
+
+    .page-brew .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Cart Toggle Button */
+    .page-brew .cart-toggle-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      padding: 10px; /* svg is 24x24; 10px padding brings the tappable area to 44x44 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .page-brew .cart-toggle-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: var(--primary);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: var(--transition);
+    }
+
+    .page-brew .cart-toggle-btn:hover svg {
+      stroke: var(--accent);
+    }
+
+    .page-brew .cart-count {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      background-color: var(--accent);
+      color: #FFFFFF;
+      font-size: 10px;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    .page-brew .cart-count.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Mobile Hamburger Menu */
+    .page-brew .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 14px; /* 3x22px spans + 2x5px gaps = 16px content; 14px padding reaches 44x44 */
+      z-index: 1001;
+    }
+
+    .page-brew .mobile-menu-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background-color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .page-brew .mobile-menu-btn.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .page-brew .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .page-brew .mobile-menu-btn.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    @media (max-width: 900px) {
+      .page-brew .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: var(--bg);
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        border-top: 1px solid var(--border);
+        z-index: 999;
+      }
+
+      .page-brew .nav-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .page-brew .mobile-menu-btn {
+        display: flex;
+      }
+      
+      .page-brew .nav-actions .btn-primary {
+        display: none; /* Reserve button hidden on mobile nav right, placed in menu drawer */
+      }
+    }
+
+    /* ==========================================================================
+       HERO SECTION — "Roaster's Ticket"
+       A real roastery pins a paper ticket/hang-tag to each sack: this hero is
+       built as that physical artifact — a torn-edge card, punch hole and all —
+       pinned across the seam of a full-bleed photograph, rather than a
+       centered headline floating over a dimmed image.
+       ========================================================================== */
+    .page-brew .hero {
+      /* Perf note: this is a CSS background-image (needed for the gradient
+         overlay + cover-fit treatment), so the native `loading="lazy"`
+         attribute doesn't apply — that only works on <img> elements. The hero
+         is above the fold anyway so eager-loading it is correct; below-fold
+         background-images (gallery .g-1..g-6) carry the same caveat, see there. */
+      position: relative;
+      min-height: calc(100vh - 80px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+      overflow: hidden;
+      background-color: var(--bg);
+    }
+
+    .page-brew .hero-photo {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 68%;
+      height: 100%;
+      background: linear-gradient(rgba(31, 59, 44, 0.35), rgba(31, 59, 44, 0.55)), url('https://images.pexels.com/photos/1459339/pexels-photo-1459339.jpeg?auto=compress&cs=tinysrgb&w=1800') no-repeat center center / cover;
+      /* Feather the left edge into the parchment background instead of a hard seam */
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 18%);
+      mask-image: linear-gradient(to right, transparent 0%, #000 18%);
+    }
+
+    .page-brew .hero-content {
+      position: relative;
+      z-index: 2;
+      grid-column: 1 / 2;
+      padding: 60px 5vw 60px 6vw;
+    }
+
+    .page-brew .hero-ticket {
+      position: relative;
+      max-width: 460px;
+      background-color: var(--card);
+      color: var(--primary);
+      padding: 48px 40px 40px;
+      box-shadow: var(--shadow-lg);
+      transform: rotate(-2deg);
+      /* Torn thermal-receipt bottom edge */
+      clip-path: polygon(0 0, 100% 0, 100% 92%, 93% 100%, 86% 92%, 79% 100%, 72% 92%, 65% 100%, 58% 92%, 51% 100%, 44% 92%, 37% 100%, 30% 92%, 23% 100%, 16% 92%, 9% 100%, 2% 92%, 0 96%);
+    }
+
+    .page-brew .hero-ticket-punch {
+      position: absolute;
+      top: -10px;
+      left: 44px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: var(--bg);
+      border: 2px solid var(--primary);
+    }
+
+    .page-brew .hero-ticket-eyebrow {
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .page-brew .hero-headline {
+      font-size: clamp(32px, 4.6vw, 52px);
+      font-weight: 700;
+      line-height: 1.08;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .page-brew .hero-subtext {
+      font-family: var(--font-body);
+      font-size: clamp(15px, 1.6vw, 17px);
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .page-brew .hero-buttons {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .page-brew .hero-buttons .btn {
+      padding: 15px 30px;
+      font-size: 14px;
+    }
+
+    .page-brew .hero-buttons .btn-primary {
+      background-color: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .page-brew .hero-buttons .btn-primary:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .page-brew .hero-buttons .btn-outline {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .page-brew .hero-buttons .btn-outline:hover {
+      background-color: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .page-brew .hero-ticket-details {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .page-brew .ticket-line {
+      display: flex;
+      align-items: baseline;
+      font-family: var(--font-heading);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .page-brew .ticket-line .label {
+      color: var(--text-secondary);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .page-brew .ticket-line .leader {
+      flex: 1 1 auto;
+      min-width: 16px;
+      border-bottom: 2px dotted var(--border);
+      margin: 0 8px;
+      transform: translateY(-3px);
+    }
+
+    .page-brew .ticket-line .value {
+      color: var(--primary);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .page-brew .hero {
+        display: block;
+        min-height: auto;
+      }
+      .page-brew .hero-photo {
+        position: relative;
+        width: 100%;
+        height: 46vh;
+        min-height: 280px;
+        mask-image: none;
+        -webkit-mask-image: none;
+      }
+      .page-brew .hero-content {
+        padding: 0 24px 60px;
+        margin-top: -48px;
+      }
+      .page-brew .hero-ticket {
+        max-width: none;
+        transform: rotate(0deg);
+      }
+    }
+
+    /* ==========================================================================
+       MENU SECTION
+       ========================================================================== */
+    .page-brew .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+
+    .page-brew .tab-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+
+    .page-brew .tab-btn:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .page-brew .tab-btn.active {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Menu board: a printed two-column list with dotted price leaders,
+       instead of a uniform grid of boxed cards — the way a real café chalks
+       or prints its menu. CSS columns let the JS-rendered rows flow into two
+       columns without any layout logic in JavaScript. */
+    .page-brew .menu-grid {
+      column-count: 2;
+      column-gap: 56px;
+      transition: opacity 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .page-brew .menu-grid {
+        column-count: 1;
+      }
+    }
+
+    .page-brew .menu-row {
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      padding: 22px 0;
+      border-bottom: 1px dashed var(--border);
+      transition: var(--transition);
+    }
+
+    .page-brew .menu-row:hover .menu-item-name {
+      color: var(--accent);
+    }
+
+    .page-brew .menu-row:hover .menu-row-leader {
+      border-bottom-color: var(--accent);
+    }
+
+    .page-brew .menu-row-top {
+      display: flex;
+      align-items: baseline;
+    }
+
+    .page-brew .menu-item-name {
+      font-family: var(--font-heading);
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--primary);
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    .page-brew .menu-row-leader {
+      flex: 1 1 auto;
+      min-width: 20px;
+      border-bottom: 2px dotted var(--border);
+      margin: 0 8px;
+      transform: translateY(-4px);
+      transition: var(--transition);
+    }
+
+    .page-brew .menu-item-tag {
+      display: inline-flex;
+      align-self: flex-start;
+      background-color: rgba(184, 68, 47, 0.08);
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 6px;
+      margin-top: 8px;
+    }
+
+    .page-brew .menu-item-price {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .page-brew .menu-item-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin: 8px 0 14px;
+      line-height: 1.5;
+      max-width: 46ch;
+    }
+
+    .page-brew .btn-add-order {
+      background: none;
+      color: var(--primary);
+      padding: 4px 0;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      border-bottom: 1px solid var(--primary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .page-brew .btn-add-order:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .page-brew .btn-add-order svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ==========================================================================
+       CART SIDEBAR PANEL (DRAWER / BOTTOM SHEET)
+       ========================================================================== */
+    .page-brew .cart-drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(31, 59, 44, 0.5);
+      z-index: 1999;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      backdrop-filter: blur(4px);
+    }
+
+    .page-brew .cart-drawer-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .page-brew .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 400px;
+      height: 100%;
+      background-color: var(--bg);
+      z-index: 2000;
+      transform: translateX(100%);
+      transition: var(--transition);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--border);
+    }
+
+    .page-brew .cart-drawer.open {
+      transform: translateX(0);
+    }
+
+    @media (max-width: 480px) {
+      .page-brew .cart-drawer {
+        width: 100%;
+        height: 85%;
+        top: auto;
+        bottom: 0;
+        transform: translateY(100%);
+        border-left: none;
+        border-top: 1px solid var(--border);
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+      }
+
+      .page-brew .cart-drawer.open {
+        transform: translateY(0);
+      }
+    }
+
+    .page-brew .cart-header {
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .page-brew .cart-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .page-brew .btn-close-cart {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+
+    .page-brew .btn-close-cart:hover {
+      color: var(--primary);
+    }
+
+    .page-brew .cart-items-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Empty state */
+    .page-brew .cart-empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      color: var(--text-secondary);
+      gap: 16px;
+    }
+
+    .page-brew .cart-empty-state svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--text-secondary);
+      opacity: 0.5;
+    }
+
+    .page-brew .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(31, 59, 44, 0.05);
+    }
+
+    .page-brew .cart-item-details {
+      flex: 1;
+      padding-right: 16px;
+    }
+
+    .page-brew .cart-item-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .page-brew .cart-item-price {
+      font-family: var(--font-heading);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .page-brew .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .page-brew .stepper {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--card);
+    }
+
+    .page-brew .stepper-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .page-brew .stepper-btn:hover {
+      background-color: var(--bg);
+      color: var(--accent);
+    }
+
+    .page-brew .stepper-value {
+      width: 24px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .page-brew .cart-item-total {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--primary);
+      min-width: 60px;
+      text-align: right;
+    }
+
+    .page-brew .cart-footer {
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      background-color: var(--card);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .page-brew .cart-summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .page-brew .cart-summary-row.grand-total {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+      border-top: 1px dashed var(--border);
+      padding-top: 12px;
+      margin-top: 4px;
+    }
+
+    .page-brew .cart-rewards-preview {
+      background-color: rgba(184, 68, 47, 0.06);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .page-brew .cart-rewards-preview svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .page-brew .cart-actions {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 12px;
+    }
+
+    .page-brew .btn-clear-cart {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .page-brew .btn-clear-cart:hover {
+      border-color: var(--error);
+      color: var(--error);
+      background-color: rgba(196, 40, 60, 0.04);
+    }
+
+    /* ==========================================================================
+       LOYALTY SECTION (BREW REWARDS)
+       ========================================================================== */
+    .page-brew .loyalty-section {
+      background-color: var(--card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 0;
+    }
+
+    .page-brew .loyalty-card {
+      background: linear-gradient(135deg, var(--primary) 0%, #2E5240 100%);
+      color: #EDEFE9;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .page-brew .loyalty-badge-watermark {
+      position: absolute;
+      right: -20px;
+      bottom: -30px;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+
+    .page-brew .loyalty-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .page-brew .loyalty-title-group h3 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .page-brew .loyalty-title-group p {
+      font-size: 14px;
+      color: rgba(237, 239, 233, 0.7);
+    }
+
+    .page-brew .loyalty-points-display {
+      font-family: var(--font-heading);
+      text-align: right;
+    }
+
+    .page-brew .loyalty-points-val {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .page-brew .loyalty-points-lbl {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-top: 4px;
+    }
+
+    .page-brew .loyalty-progress-container {
+      margin-top: 12px;
+    }
+
+    .page-brew .loyalty-progress-bar-bg {
+      background-color: rgba(237, 239, 233, 0.15);
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .page-brew .loyalty-progress-bar {
+      height: 100%;
+      background-color: var(--accent);
+      border-radius: 4px;
+      width: 65%;
+      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .page-brew .loyalty-progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    .page-brew .loyalty-coffees-badge {
+      background-color: rgba(184, 68, 47, 0.2);
+      border: 1px solid var(--accent);
+      color: #FFFFFF;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      align-self: flex-start;
+      margin-top: 8px;
+      animation: brew-pulse 2s infinite alternate;
+    }
+
+    @keyframes brew-pulse {
+      0% { box-shadow: 0 0 0 0 rgba(184, 68, 47, 0.4); }
+      100% { box-shadow: 0 0 0 8px rgba(184, 68, 47, 0); }
+    }
+
+    /* ==========================================================================
+       RESERVATION SECTION
+       ========================================================================== */
+    .page-brew .reserve-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .page-brew .reserve-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .page-brew .reserve-info-panel h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      margin-bottom: 24px;
+      line-height: 1.15;
+    }
+
+    .page-brew .reserve-info-panel p {
+      color: var(--text-secondary);
+      font-size: 16px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .page-brew .reserve-features {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .page-brew .reserve-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .page-brew .reserve-feature-icon {
+      width: 44px;
+      height: 44px;
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+
+    .page-brew .reserve-feature-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .page-brew .reserve-feature-text h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .page-brew .reserve-feature-text p {
+      font-size: 13px;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .page-brew .reserve-card {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      min-height: 450px;
+    }
+
+    @media (max-width: 480px) {
+      .page-brew .reserve-card {
+        padding: 24px;
+      }
+    }
+
+    .page-brew .reservation-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: opacity 0.3s ease;
+    }
+
+    .page-brew .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 480px) {
+      .page-brew .form-row-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .page-brew .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .page-brew .form-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .page-brew .input-field {
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background-color: var(--bg);
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .page-brew .input-field:focus {
+      border-color: var(--accent);
+      background-color: #FFFFFF;
+      box-shadow: 0 0 0 3px var(--border-focus);
+    }
+
+    .page-brew .error-text {
+      color: var(--error);
+      font-size: 11px;
+      font-weight: 500;
+      display: none;
+      margin-top: -2px;
+    }
+
+    /* Guest Stepper in Form */
+    .page-brew .guest-stepper-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background-color: var(--bg);
+    }
+
+    .page-brew .guest-stepper-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .page-brew .guest-stepper-btn:hover {
+      color: var(--accent);
+    }
+
+    .page-brew .guest-stepper-val {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* Success State Panel */
+    .page-brew .reservation-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      padding: 20px 0;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: var(--transition);
+    }
+
+    .page-brew .reservation-success.active {
+      display: flex;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .page-brew .success-icon-wrapper {
+      width: 72px;
+      height: 72px;
+      background-color: rgba(46, 125, 50, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--success);
+      margin-bottom: 24px;
+    }
+
+    .page-brew .success-icon-wrapper svg {
+      width: 36px;
+      height: 36px;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      animation: brew-drawCheck 0.6s ease-out forwards;
+      animation-delay: 0.2s;
+    }
+
+    @keyframes brew-drawCheck {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .page-brew .success-headline {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .page-brew .success-subtext {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      max-width: 320px;
+    }
+
+    .page-brew .success-summary {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .page-brew .success-summary-item {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .page-brew .success-summary-lbl {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .page-brew .success-summary-val {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .page-brew .success-summary-item.code {
+      border-top: 1px dashed var(--border);
+      padding-top: 8px;
+      margin-top: 4px;
+    }
+
+    .page-brew .success-summary-item.code .success-summary-val {
+      color: var(--accent);
+      font-family: var(--font-heading);
+      letter-spacing: 0.05em;
+    }
+
+    /* ==========================================================================
+       ABOUT SECTION
+       ========================================================================== */
+    .page-brew .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .page-brew .about-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .page-brew .about-content h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      margin-bottom: 24px;
+      line-height: 1.15;
+    }
+
+    .page-brew .about-content p {
+      color: var(--text-secondary);
+      font-size: 16px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .page-brew .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .page-brew .stat-box {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 16px;
+      background-color: var(--card);
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow-card);
+    }
+
+    .page-brew .stat-box:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .page-brew .stat-number {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .page-brew .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .page-brew .about-graphic {
+      height: 450px;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow-md);
+      background: linear-gradient(135deg, rgba(184, 68, 47, 0.4) 0%, rgba(31, 59, 44, 0.75) 100%), url('https://images.pexels.com/photos/3735183/pexels-photo-3735183.jpeg?auto=compress&cs=tinysrgb&w=800') no-repeat center center / cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page-brew .about-graphic-pattern {
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      background-image: radial-gradient(rgba(237, 239, 233, 0.05) 1px, transparent 0);
+      background-size: 20px 20px;
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       SIGNATURE ELEMENT: ROAST CURVE
+       A real roaster reads bean temperature as a line climbing over time,
+       marked at "first crack." Since Brew & Co. roasts its own Coorg &
+       Chikmagalur beans on site in small batches, that curve — not a generic
+       coffee-cup icon — is the one graphic mark unique to this shop.
+       ========================================================================== */
+    .page-brew .roast-curve {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 55%;
+      z-index: 1;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .page-brew .roast-curve-line {
+      fill: none;
+      stroke: var(--bg);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.8;
+      stroke-dasharray: 620;
+      stroke-dashoffset: 620;
+      transition: stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+    }
+
+    .page-brew .reveal.active .roast-curve-line {
+      stroke-dashoffset: 0;
+    }
+
+    .page-brew .roast-curve-marker {
+      fill: var(--bg);
+      opacity: 0;
+      transition: opacity 0.4s ease 1.4s;
+    }
+
+    .page-brew .reveal.active .roast-curve-marker {
+      opacity: 0.9;
+    }
+
+    .page-brew .roast-curve-label {
+      position: absolute;
+      left: 24px;
+      bottom: 20px;
+      z-index: 2;
+      color: #EDEFE9;
+      font-family: var(--font-heading);
+    }
+
+    .page-brew .roast-curve-label .label-main {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .page-brew .roast-curve-label .label-sub {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-top: 4px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .page-brew .roast-curve-line {
+        stroke-dashoffset: 0;
+        transition: none;
+      }
+      .page-brew .roast-curve-marker {
+        opacity: 0.9;
+        transition: none;
+      }
+    }
+
+    .page-brew .about-graphic-logo {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 6vw, 48px);
+      font-weight: 700;
+      color: #EDEFE9;
+      opacity: 0.9;
+      letter-spacing: 0.1em;
+      border: 2px solid #EDEFE9;
+      padding: 20px 40px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       GALLERY SECTION
+       ========================================================================== */
+    .page-brew .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 240px;
+      grid-auto-flow: dense;
+      gap: 28px;
+    }
+
+    .page-brew .gallery-card {
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
+    }
+
+    .page-brew .gallery-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    /* Grid Span Configurations for an editorial, non-uniform layout */
+    .page-brew .gallery-card.span-col-2 {
+      grid-column: span 2;
+    }
+
+    .page-brew .gallery-card.span-row-2 {
+      grid-row: span 2;
+    }
+
+    /* One tile breaks from the rectangle entirely — an ink-blot / coffee-ring
+       silhouette rather than another rounded-rectangle tile. */
+    .page-brew .gallery-card.gallery-blob {
+      border-radius: 64% 36% 33% 67% / 58% 32% 68% 42%;
+    }
+
+    @media (max-width: 768px) {
+      .page-brew .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+      }
+      .page-brew .gallery-card.span-col-2 {
+        grid-column: span 1;
+      }
+      .page-brew .gallery-card.gallery-blob {
+        border-radius: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-brew .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 220px;
+      }
+      .page-brew .gallery-card.span-col-2,
+.page-brew .gallery-card.span-row-2 {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+    }
+
+    .page-brew .gallery-gradient-bg {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+      position: relative;
+      color: #FFFFFF;
+      transition: var(--transition);
+    }
+
+    /* Different gradients for placeholders.
+       Perf note: these are below-fold CSS background-images. Native
+       `loading="lazy"` only applies to <img> elements, so it can't be set
+       here directly; the browser still defers requesting a background-image
+       until the rule matches a rendered box, but true viewport-based lazy
+       loading of a CSS background needs an IntersectionObserver swapping a
+       data attribute into the class/style (not added here to keep this an
+       additive, low-risk change rather than a markup/JS restructure). */
+    .page-brew .g-1 { background: linear-gradient(135deg, rgba(31, 59, 44, 0.45) 0%, rgba(31, 59, 44, 0.8) 100%), url('https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=800') no-repeat center center / cover; }
+    .page-brew .g-2 { background: linear-gradient(135deg, rgba(31, 59, 44, 0.45) 0%, rgba(31, 59, 44, 0.8) 100%), url('https://images.pexels.com/photos/2396220/pexels-photo-2396220.jpeg?auto=compress&cs=tinysrgb&w=800') no-repeat center center / cover; }
+    .page-brew .g-3 { background: linear-gradient(135deg, rgba(31, 59, 44, 0.45) 0%, rgba(31, 59, 44, 0.8) 100%), url('https://images.pexels.com/photos/3850624/pexels-photo-3850624.jpeg?auto=compress&cs=tinysrgb&w=800') no-repeat center center / cover; }
+    .page-brew .g-4 { background: linear-gradient(135deg, rgba(31, 59, 44, 0.45) 0%, rgba(31, 59, 44, 0.8) 100%), url('https://images.pexels.com/photos/894612/pexels-photo-894612.jpeg?auto=compress&cs=tinysrgb&w=800') no-repeat center center / cover; }
+    .page-brew .g-5 { background: linear-gradient(135deg, rgba(31, 59, 44, 0.45) 0%, rgba(31, 59, 44, 0.8) 100%), url('https://images.pexels.com/photos/324028/pexels-photo-324028.jpeg?auto=compress&cs=tinysrgb&w=800') no-repeat center center / cover; }
+    .page-brew .g-6 { background: linear-gradient(135deg, rgba(237, 239, 233, 0.4) 0%, rgba(237, 239, 233, 0.8) 100%), url('https://images.pexels.com/photos/4264049/pexels-photo-4264049.jpeg?auto=compress&cs=tinysrgb&w=800') no-repeat center center / cover; }
+
+    .page-brew .gallery-card:hover .gallery-gradient-bg {
+      filter: saturate(1.1) brightness(0.95);
+    }
+
+    .page-brew .gallery-content-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(31, 59, 44, 0.6) 0%, rgba(31, 59, 44, 0) 60%);
+      z-index: 1;
+    }
+
+    .page-brew .gallery-label {
+      position: relative;
+      z-index: 2;
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .page-brew .gallery-subtitle {
+      position: relative;
+      z-index: 2;
+      font-size: 12px;
+      opacity: 0.8;
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* Lightbox Modal */
+    .page-brew .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(31, 59, 44, 0.95);
+      z-index: 2001;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .page-brew .lightbox.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .page-brew .lightbox-content {
+      width: 100%;
+      max-width: 800px;
+      height: 480px;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 40px;
+      color: #FFFFFF;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+      transform: scale(0.9);
+      transition: var(--transition);
+    }
+
+    @media (max-width: 600px) {
+      .page-brew .lightbox-content {
+        height: 360px;
+        padding: 24px;
+      }
+    }
+
+    .page-brew .lightbox.open .lightbox-content {
+      transform: scale(1);
+    }
+
+    .page-brew .btn-close-lightbox {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(237, 239, 233, 0.1);
+      border: none;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      transition: var(--transition);
+    }
+
+    .page-brew .btn-close-lightbox:hover {
+      background-color: rgba(237, 239, 233, 0.2);
+    }
+
+    .page-brew .lightbox-label {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      margin-top: auto;
+      line-height: 1.2;
+    }
+
+    .page-brew .lightbox-desc {
+      font-size: 15px;
+      opacity: 0.85;
+      margin-top: 12px;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       CONTACT & FOOTER
+       ========================================================================== */
+    .page-brew .contact-section {
+      border-top: 1px solid var(--border);
+    }
+
+    .page-brew .contact-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 900px) {
+      .page-brew .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .page-brew .map-placeholder {
+      background-color: #DDE2D6;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      min-height: 320px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .page-brew .map-graphic {
+      width: 120%;
+      height: 120%;
+      background-image: radial-gradient(rgba(31, 59, 44, 0.04) 2px, transparent 0);
+      background-size: 30px 30px;
+      position: absolute;
+    }
+
+    .page-brew .map-pin-container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .page-brew .map-pin {
+      width: 48px;
+      height: 48px;
+      background-color: var(--primary);
+      border: 3px solid #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      box-shadow: var(--shadow-md);
+      animation: brew-bounce 2s infinite;
+    }
+
+    @keyframes brew-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .page-brew .map-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      background-color: #FFFFFF;
+      padding: 6px 14px;
+      border-radius: 20px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+
+    .page-brew .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      justify-content: center;
+    }
+
+    .page-brew .contact-group h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+    }
+
+    .page-brew .contact-group p {
+      font-size: 15px;
+      color: var(--primary);
+      line-height: 1.6;
+    }
+
+    .page-brew .footer {
+      background-color: var(--primary);
+      color: rgba(237, 239, 233, 0.7);
+      padding: 80px 0 40px 0;
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-brew .footer-layout {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .page-brew .footer-left {
+      max-width: 320px;
+    }
+
+    .page-brew .footer-left .logo {
+      color: #FFFFFF;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .page-brew .footer-left p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .page-brew .footer-right {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 60px;
+    }
+
+    @media (max-width: 480px) {
+      .page-brew .footer-right {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    .page-brew .footer-col h5 {
+      color: #FFFFFF;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .page-brew .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .page-brew .footer-col a:hover {
+      color: #FFFFFF;
+      transform: translateX(4px);
+    }
+
+    .page-brew .footer-bottom {
+      border-top: 1px solid rgba(237, 239, 233, 0.1);
+      padding-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .page-brew .footer-wordmark {
+      font-family: var(--font-heading);
+      font-size: clamp(48px, 12vw, 140px);
+      font-weight: 800;
+      color: rgba(237, 239, 233, 0.02);
+      text-align: center;
+      letter-spacing: 0.05em;
+      user-select: none;
+      pointer-events: none;
+      margin-top: 40px;
+      line-height: 0.9;
+    }
+
+    /* Modal Styling for simulated alerts */
+    .page-brew .alert-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(31, 59, 44, 0.6);
+      z-index: 3000;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      backdrop-filter: blur(4px);
+    }
+
+    .page-brew .alert-modal.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .page-brew .alert-modal-content {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: var(--shadow-lg);
+      transform: scale(0.9);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .page-brew .alert-modal.open .alert-modal-content {
+      transform: scale(1);
+    }
+
+    .page-brew .alert-icon {
+      width: 56px;
+      height: 56px;
+      background-color: rgba(184, 68, 47, 0.1);
+      color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px auto;
+    }
+
+    .page-brew .alert-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .page-brew .alert-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .page-brew .alert-msg {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }

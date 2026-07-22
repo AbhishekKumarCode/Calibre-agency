@@ -1,0 +1,15 @@
+/* Deliberately minimal — each page brings its own complete design system
+   (colors, type, spacing) scoped under its own .page-* wrapper class, so
+   this file must not impose any opinionated global styling that would
+   bleed into them. */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}

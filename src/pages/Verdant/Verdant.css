@@ -1,0 +1,1684 @@
+/* ==========================================
+   DESIGN SYSTEM & TOKENS
+   ========================================== */
+.page-verdant {
+  --bg: #F7F5F0;             /* Warm off-white */
+  --card-bg: #FFFFFF;        /* Pure white */
+  --primary: #2F3E2E;        /* Deep sage / forest */
+  --primary-rgb: 47, 62, 46;
+  --accent: #C9A876;         /* Warm gold accent */
+  --text-secondary: #6B6B6B; /* Muted text */
+  --font-heading: 'Domine', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-serif: 'Georgia', serif;
+  --transition-slow: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset */
+.page-verdant, .page-verdant *, .page-verdant *::before, .page-verdant *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.page-verdant {
+  scroll-behavior: smooth;
+  background-color: var(--bg);
+}
+
+.page-verdant {
+  font-family: var(--font-body);
+  color: var(--primary);
+  background-color: var(--bg);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.page-verdant a, .page-verdant button {
+  color: inherit;
+  text-decoration: none;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.page-verdant a:focus-visible, .page-verdant button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Utility Layouts */
+.page-verdant .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .page-verdant .container {
+    padding: 0 24px;
+  }
+}
+
+.page-verdant .section {
+  padding: 120px 0;
+}
+
+@media (max-width: 768px) {
+  .page-verdant .section {
+    padding: 80px 0;
+  }
+}
+
+/* Common Typography styling */
+.page-verdant .label-caps {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.page-verdant .section-title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.2;
+  color: var(--primary);
+  margin-bottom: 40px;
+}
+
+.page-verdant .section-title--flush {
+  margin-bottom: 0;
+}
+
+/* Soft, premium visual guidelines */
+.page-verdant img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform var(--transition-slow);
+}
+
+.page-verdant .img-hover-container {
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+}
+
+.page-verdant .img-hover-container:hover img {
+  transform: scale(1.03);
+}
+
+/* Quiet Underline Animation */
+.page-verdant .text-link-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.page-verdant .text-link-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary);
+  transform-origin: bottom right;
+  transition: transform var(--transition-fast);
+}
+
+.page-verdant .text-link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.page-verdant .gold-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.page-verdant .gold-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--accent);
+  transform-origin: bottom left;
+  transition: transform var(--transition-fast);
+}
+
+.page-verdant .gold-underline-active::after {
+  transform: scaleX(1);
+}
+
+/* ==========================================
+   NAVIGATION HEADER
+   ========================================== */
+.page-verdant .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.page-verdant .header.scrolled {
+  background-color: #EDEAE4;
+  border-bottom: 1px solid rgba(47, 62, 46, 0.08);
+}
+
+.page-verdant .nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.page-verdant .logo {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.page-verdant .nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.page-verdant .nav-link {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 400;
+  color: var(--primary);
+  margin-left: 40px;
+  transition: opacity var(--transition-fast);
+}
+
+.page-verdant .nav-link:hover {
+  opacity: 0.7;
+}
+
+.page-verdant .saved-count-link {
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .page-verdant .nav-links {
+    display: none; /* simple mobile drawer or scroll list for full responsive styling */
+  }
+  .page-verdant .nav-links-mobile-toggle {
+    display: block;
+  }
+}
+
+/* Mobile Quick Nav Bar */
+.page-verdant .mobile-nav-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #EDEAE4;
+  border-top: 1px solid rgba(47, 62, 46, 0.08);
+  z-index: 999;
+  padding: 15px 0;
+}
+
+.page-verdant .mobile-nav-bar-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.page-verdant .mobile-nav-bar-link {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .page-verdant .mobile-nav-bar {
+    display: block;
+  }
+  .page-verdant .header {
+    position: absolute;
+  }
+}
+
+/* ==========================================
+   HERO - MAGAZINE COVER / MASTHEAD
+   ========================================== */
+.page-verdant .cover-masthead-bar {
+  padding-top: 140px;
+  padding-bottom: 28px;
+}
+
+.page-verdant .cover-masthead-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(47, 62, 46, 0.15);
+  padding-bottom: 22px;
+}
+
+.page-verdant .cover-logotype {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--primary);
+  text-transform: uppercase;
+}
+
+.page-verdant .cover-issue-line {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.page-verdant .cover-photo-frame {
+  position: relative;
+  width: 100%;
+  height: 84vh;
+  min-height: 520px;
+  max-height: 820px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.page-verdant .cover-photo-frame img {
+  border-radius: 2px;
+}
+
+.page-verdant .cover-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(20, 26, 19, 0.82) 0%, rgba(20, 26, 19, 0.32) 45%, rgba(20, 26, 19, 0) 68%);
+  pointer-events: none;
+}
+
+.page-verdant .cover-overlay-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 40px 56px;
+  max-width: 760px;
+}
+
+.page-verdant .cover-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.page-verdant .cover-kicker::before {
+  content: '';
+  width: 26px;
+  height: 1px;
+  background-color: var(--accent);
+  display: inline-block;
+}
+
+.page-verdant .cover-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(38px, 6.5vw, 74px);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--bg);
+  margin-bottom: 20px;
+}
+
+.page-verdant .cover-dek {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--bg);
+  opacity: 0.85;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+
+.page-verdant .cover-cta {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--bg);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+}
+
+.page-verdant .cover-cta.text-link-underline::after {
+  background-color: var(--bg);
+}
+
+@media (max-width: 768px) {
+  .page-verdant .cover-masthead-bar {
+    padding-top: 110px;
+    padding-bottom: 20px;
+  }
+  .page-verdant .cover-masthead-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .page-verdant .cover-issue-line {
+    text-align: left;
+  }
+  .page-verdant .cover-photo-frame {
+    height: 70vh;
+    min-height: 460px;
+  }
+  .page-verdant .cover-overlay-content {
+    padding: 0 24px 40px;
+  }
+}
+
+/* ==========================================
+   SHOP BY ROOM - MAGAZINE SPREAD LAYOUT
+   ========================================== */
+.page-verdant .rooms-section {
+  background-color: var(--card-bg);
+  border-top: 1px solid rgba(47, 62, 46, 0.05);
+  border-bottom: 1px solid rgba(47, 62, 46, 0.05);
+}
+
+.page-verdant .rooms-layout-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.page-verdant .rooms-row-1 {
+  display: flex;
+  gap: 40px;
+}
+
+.page-verdant .rooms-row-2 {
+  display: flex;
+  gap: 40px;
+}
+
+.page-verdant .room-tile {
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+
+.page-verdant .room-tile .img-hover-container {
+  border-radius: 16px;
+  box-shadow: 0 14px 34px rgba(47, 62, 46, 0.12);
+  border: 1px solid rgba(47, 62, 46, 0.06);
+}
+
+/* Sizes */
+.page-verdant .room-living {
+  flex: 0 0 60%;
+}
+
+.page-verdant .room-bedroom {
+  flex: 0 0 calc(40% - 40px);
+  margin-top: 20px; /* Offset Bedroom 20px lower */
+}
+
+.page-verdant .room-kitchen {
+  flex: 0 0 calc(50% - 20px);
+}
+
+.page-verdant .room-balcony {
+  flex: 0 0 calc(50% - 20px);
+}
+
+/* Inner Heights */
+.page-verdant .room-living .img-hover-container {
+  height: 320px;
+}
+
+.page-verdant .room-bedroom .img-hover-container {
+  height: 280px;
+}
+
+.page-verdant .room-kitchen .img-hover-container {
+  height: 240px;
+}
+
+.page-verdant .room-balcony .img-hover-container {
+  height: 240px;
+}
+
+.page-verdant .room-name-wrapper {
+  margin-top: 24px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.page-verdant .room-plate-no {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.page-verdant .room-name {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.page-verdant .room-glyph {
+  color: var(--accent);
+  font-size: 0.85em;
+  vertical-align: 1px;
+  display: inline-block;
+}
+
+.page-verdant .room-tile:hover .gold-underline::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 768px) {
+  .page-verdant .rooms-row-1, .page-verdant .rooms-row-2 {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .page-verdant .room-tile {
+    width: 100% !important;
+    flex: none !important;
+    margin-top: 0 !important;
+  }
+  .page-verdant .room-living .img-hover-container,
+  .page-verdant .room-bedroom .img-hover-container,
+  .page-verdant .room-kitchen .img-hover-container,
+  .page-verdant .room-balcony .img-hover-container {
+    height: 250px;
+  }
+}
+
+/* ==========================================
+   THE LOOKBOOK - EDITORIAL PLATE SPREAD
+   ========================================== */
+.page-verdant .lookbook-section {
+  padding-bottom: 60px;
+}
+
+.page-verdant .lookbook-intro-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  gap: 30px;
+}
+
+.page-verdant .lookbook-intro-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--text-secondary);
+  font-size: 15px;
+  max-width: 340px;
+  line-height: 1.6;
+}
+
+.page-verdant .lookbook-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 40px;
+}
+
+.page-verdant .lookbook-plate {
+  position: relative;
+}
+
+.page-verdant .lookbook-plate--tall {
+  grid-row: 1 / 3;
+}
+
+.page-verdant .lookbook-plate-frame {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.page-verdant .lookbook-plate-frame img {
+  border-radius: 2px;
+}
+
+.page-verdant .lookbook-plate--tall .lookbook-plate-frame {
+  height: 640px;
+}
+
+.page-verdant .lookbook-plate:not(.lookbook-plate--tall) .lookbook-plate-frame {
+  height: 300px;
+}
+
+.page-verdant .lookbook-caption {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 90%;
+}
+
+.page-verdant .lookbook-cap-no {
+  font-family: var(--font-heading);
+  color: var(--primary);
+  font-size: 13px;
+  margin-right: 6px;
+}
+
+.page-verdant .lookbook-credit {
+  display: block;
+  margin-top: 4px;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.page-verdant .catalog-index-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+  .page-verdant .lookbook-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+  .page-verdant .lookbook-plate--tall {
+    grid-row: auto;
+  }
+  .page-verdant .lookbook-plate--tall .lookbook-plate-frame {
+    height: 380px;
+  }
+  .page-verdant .lookbook-intro-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ==========================================
+   BESTSELLERS - EDITORIAL ROW-BY-ROW
+   ========================================== */
+.page-verdant .bestsellers-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+
+.page-verdant .bestsellers-filter-nav {
+  display: flex;
+  gap: 30px;
+}
+
+.page-verdant .filter-btn {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  opacity: 0.4;
+  transition: opacity var(--transition-fast);
+  position: relative;
+}
+
+.page-verdant .filter-btn:hover {
+  opacity: 0.75;
+}
+
+.page-verdant .filter-btn.active,
+.page-verdant .filter-btn.active:hover {
+  opacity: 1;
+}
+
+.page-verdant .filter-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--accent);
+}
+
+.page-verdant .bestsellers-list {
+  margin-top: 24px;
+}
+
+.page-verdant .product-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 32px;
+  margin-bottom: 16px;
+  background-color: var(--card-bg);
+  border: 1px solid rgba(47, 62, 46, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 2px 16px rgba(47, 62, 46, 0.05);
+  transition: height 0.5s ease, opacity 0.5s ease, padding 0.5s ease, margin 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+  opacity: 1;
+  height: 136px; /* 80px thumb + 56px vertical padding */
+  overflow: hidden;
+}
+
+.page-verdant .product-row.filtered-out {
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  opacity: 0;
+  border-color: transparent;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.page-verdant .product-left-cell {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex: 1;
+}
+
+.page-verdant .product-thumb {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #edeae4 0%, #dcd8cf 100%);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.page-verdant .product-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-verdant .product-title {
+  font-family: var(--font-heading);
+  font-size: clamp(16px, 1.8vw, 19px);
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.page-verdant .product-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 4px 0;
+}
+
+.page-verdant .product-tag {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.page-verdant .product-right-cell {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+}
+
+.page-verdant .product-price {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  color: var(--primary);
+}
+
+.page-verdant .add-to-bag-btn {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  border-bottom: 1px solid var(--primary);
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.page-verdant .product-row:hover .add-to-bag-btn,
+.page-verdant .product-row:focus-within .add-to-bag-btn {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-verdant .add-to-bag-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.page-verdant .wishlist-btn {
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  margin: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.page-verdant .wishlist-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 1.5px;
+  transition: fill var(--transition-fast), stroke var(--transition-fast), transform var(--transition-fast);
+}
+
+.page-verdant .wishlist-btn:hover svg {
+  transform: scale(1.1);
+}
+
+.page-verdant .wishlist-btn.active svg {
+  fill: var(--primary);
+  stroke: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .page-verdant .bestsellers-header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .page-verdant .bestsellers-filter-nav {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+  .page-verdant .product-left-cell {
+    gap: 15px;
+  }
+  .page-verdant .product-thumb {
+    width: 60px;
+    height: 60px;
+  }
+  .page-verdant .product-row {
+    padding: 22px 20px;
+    height: 104px; /* 60px thumb + 44px vertical padding */
+  }
+  .page-verdant .product-right-cell {
+    gap: 15px;
+  }
+  .page-verdant .add-to-bag-btn {
+    opacity: 1;
+    transform: none;
+    font-size: 9px;
+  }
+}
+
+/* ==========================================
+   FIND YOUR STYLE - FULL-BLEED QUIZ
+   ========================================== */
+.page-verdant .quiz-section {
+  background-color: var(--card-bg);
+  border-top: 1px solid rgba(47, 62, 46, 0.05);
+  border-bottom: 1px solid rgba(47, 62, 46, 0.05);
+}
+
+.page-verdant .quiz-card-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.page-verdant .quiz-progress-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.page-verdant .quiz-dot {
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--primary);
+  border-radius: 50%;
+  background: transparent;
+  transition: background-color var(--transition-fast);
+}
+
+.page-verdant .quiz-dot.active {
+  background-color: var(--primary);
+}
+
+.page-verdant .quiz-question-box {
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page-verdant .quiz-question-title {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 3.5vw, 34px);
+  font-weight: 400;
+  color: var(--primary);
+  margin-bottom: 40px;
+}
+
+.page-verdant .quiz-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: left;
+}
+
+.page-verdant .quiz-option-row {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(47, 62, 46, 0.08);
+  font-size: clamp(15px, 2vw, 18px);
+  color: var(--primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border-color var(--transition-fast), padding-left var(--transition-fast);
+}
+
+.page-verdant .quiz-option-row:hover {
+  border-bottom: 1px solid var(--accent);
+  padding-left: 10px;
+}
+
+.page-verdant .quiz-option-arrow {
+  opacity: 0;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  transform: translateX(-10px);
+}
+
+.page-verdant .quiz-option-row:hover .quiz-option-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Quiz Results */
+.page-verdant .quiz-results-box {
+  display: none;
+  animation: verdant-quizFadeIn 0.8s forwards;
+}
+
+@keyframes verdant-quizFadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-verdant .style-title-reveal {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 400;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.page-verdant .style-description-reveal {
+  font-size: 15px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 50px auto;
+  line-height: 1.8;
+}
+
+.page-verdant .recommendations-title {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 24px;
+  display: block;
+}
+
+.page-verdant .quiz-recs-list {
+  border-top: 1px solid rgba(47, 62, 46, 0.08);
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.page-verdant .retake-quiz-link {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--text-secondary);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+  display: inline-block;
+}
+
+.page-verdant .retake-quiz-link:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* ==========================================
+   THE EDIT - JOURNAL FEATURE SPREAD
+   ========================================== */
+
+/* Lead feature */
+.page-verdant .journal-lead {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 100px;
+  padding-bottom: 100px;
+  border-bottom: 1px solid rgba(47, 62, 46, 0.1);
+}
+
+.page-verdant .journal-lead-img {
+  height: 620px;
+  border-radius: 2px;
+  box-shadow: 0 14px 34px rgba(47, 62, 46, 0.12);
+}
+
+.page-verdant .journal-lead-img img {
+  border-radius: 2px;
+}
+
+.page-verdant .journal-lead-byline {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.page-verdant .journal-lead-title {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 28px;
+  color: var(--primary);
+}
+
+.page-verdant .journal-lead-body {
+  column-count: 2;
+  column-gap: 32px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.page-verdant .journal-drop-cap::first-letter {
+  font-family: var(--font-heading);
+  font-size: 3.6em;
+  font-weight: 600;
+  color: var(--primary);
+  float: left;
+  line-height: 0.8;
+  padding-right: 8px;
+  padding-top: 4px;
+}
+
+.page-verdant .journal-pull-quote {
+  column-span: all;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(19px, 2.4vw, 24px);
+  color: var(--primary);
+  line-height: 1.5;
+  border-left: 2px solid var(--accent);
+  padding: 4px 0 4px 26px;
+  margin: 8px 0 20px;
+}
+
+.page-verdant .journal-lead-cta {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .page-verdant .journal-lead {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 70px;
+    padding-bottom: 70px;
+  }
+  .page-verdant .journal-lead-img {
+    height: 340px;
+  }
+  .page-verdant .journal-lead-body {
+    column-count: 1;
+  }
+}
+
+/* Secondary "also in this issue" list */
+.page-verdant .journal-secondary-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 32px;
+  display: block;
+}
+
+.page-verdant .journal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.page-verdant .journal-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-verdant .journal-img-container {
+  height: 280px;
+  margin-bottom: 24px;
+  border-radius: 16px;
+  box-shadow: 0 14px 34px rgba(47, 62, 46, 0.12);
+  border: 1px solid rgba(47, 62, 46, 0.06);
+}
+
+.page-verdant .journal-meta-row {
+  margin-bottom: 12px;
+}
+
+.page-verdant .journal-tag {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.page-verdant .journal-title {
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  color: var(--primary);
+}
+
+.page-verdant .journal-excerpt {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.page-verdant .journal-read-link {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .page-verdant .journal-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .page-verdant .journal-img-container {
+    height: 320px;
+  }
+}
+
+/* ==========================================
+   GIFT REGISTRY
+   ========================================== */
+.page-verdant .registry-section {
+  background-color: var(--card-bg);
+  border-top: 1px solid rgba(47, 62, 46, 0.05);
+  border-bottom: 1px solid rgba(47, 62, 46, 0.05);
+}
+
+.page-verdant .registry-grid {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 40px;
+  align-items: center;
+}
+
+.page-verdant .registry-desc-container {
+  padding-right: 40px;
+}
+
+.page-verdant .registry-body-text {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+.page-verdant .registry-interactive-cta {
+  display: inline-block;
+}
+
+.page-verdant .registry-input-wrapper {
+  display: none;
+  margin-top: 20px;
+  animation: verdant-quizFadeIn 0.5s forwards;
+}
+
+.page-verdant .registry-input-inner {
+  display: flex;
+  border-bottom: 1px solid var(--primary);
+  padding-bottom: 8px;
+  max-width: 320px;
+}
+
+.page-verdant .registry-input-field {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--primary);
+  flex: 1;
+}
+
+.page-verdant .registry-input-field::placeholder {
+  color: rgba(47, 62, 46, 0.4);
+}
+
+.page-verdant .registry-submit-arrow {
+  font-size: 16px;
+  color: var(--primary);
+  padding-left: 10px;
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+.page-verdant .registry-submit-arrow:hover {
+  transform: translateX(3px);
+}
+
+.page-verdant .registry-success-box {
+  display: none;
+  margin-top: 20px;
+  font-size: 13.5px;
+  color: var(--primary);
+  animation: verdant-quizFadeIn 0.5s forwards;
+}
+
+.page-verdant .registry-success-link {
+  color: var(--accent);
+  text-decoration: underline;
+  display: block;
+  margin-top: 6px;
+}
+
+/* Mockup Visual Card */
+.page-verdant .registry-mockup-card {
+  background-color: var(--bg);
+  border: 1px solid rgba(47, 62, 46, 0.08);
+  padding: 30px;
+  border-radius: 2px;
+}
+
+.page-verdant .registry-mockup-title {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 24px;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.page-verdant .registry-mockup-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(47, 62, 46, 0.06);
+}
+
+.page-verdant .registry-mockup-item:last-child {
+  border-bottom: none;
+}
+
+.page-verdant .registry-item-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.page-verdant .registry-item-thumb {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #edeae4 0%, #dcd8cf 100%);
+}
+
+.page-verdant .registry-item-name {
+  font-size: 13.5px;
+  font-weight: 400;
+}
+
+.page-verdant .registry-item-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.page-verdant .registry-item-price {
+  font-size: 13.5px;
+  font-family: var(--font-heading);
+  color: var(--text-secondary);
+}
+
+.page-verdant .registry-check-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.page-verdant .registry-check-status svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: var(--text-secondary);
+  stroke-width: 2px;
+}
+
+@media (max-width: 768px) {
+  .page-verdant .registry-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .page-verdant .registry-desc-container {
+    padding-right: 0;
+  }
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.page-verdant .footer {
+  background-color: #EDEAE4;
+  border-top: 1px solid rgba(47, 62, 46, 0.08);
+  padding: 100px 0 60px 0;
+}
+
+.page-verdant .footer-top-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+
+.page-verdant .footer-brand-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.page-verdant .footer-brand-desc {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  max-width: 320px;
+  line-height: 1.7;
+}
+
+.page-verdant .footer-nav-col h5 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.page-verdant .footer-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.page-verdant .footer-nav-link {
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.page-verdant .footer-nav-link:hover {
+  color: var(--primary);
+}
+
+.page-verdant .footer-newsletter-col h5 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.page-verdant .footer-newsletter-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.page-verdant .newsletter-form-container {
+  display: flex;
+  border-bottom: 1px solid var(--primary);
+  padding-bottom: 8px;
+}
+
+.page-verdant .newsletter-input {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: var(--primary);
+  flex: 1;
+}
+
+.page-verdant .newsletter-input::placeholder {
+  color: rgba(47, 62, 46, 0.4);
+}
+
+.page-verdant .newsletter-submit-btn {
+  font-size: 16px;
+  color: var(--primary);
+  padding-left: 10px;
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+.page-verdant .newsletter-submit-btn:hover {
+  transform: translateX(3px);
+}
+
+/* Giant thin wordmark watermark */
+.page-verdant .giant-footer-watermark {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  font-size: clamp(48px, 12vw, 140px);
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: var(--primary);
+  opacity: 0.05;
+  user-select: none;
+  pointer-events: none;
+  margin-top: 40px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.page-verdant .footer-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(47, 62, 46, 0.08);
+  padding-top: 30px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.page-verdant .footer-bottom-links {
+  display: flex;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .page-verdant .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  .page-verdant .footer-bottom-row {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .page-verdant .footer {
+    padding-bottom: 120px; /* offset for bottom mobile navigation */
+  }
+}
+
+/* ==========================================
+   SLIDING ARTICLE DRAWER
+   ========================================== */
+.page-verdant .drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(47, 62, 46, 0.25);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+
+.page-verdant .drawer-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.page-verdant .drawer-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 500px;
+  max-width: 100%;
+  background-color: var(--bg);
+  z-index: 2001;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+  border-left: 1px solid rgba(47, 62, 46, 0.08);
+  transform: translateX(100%);
+  transition: transform var(--transition-slow);
+  display: flex;
+  flex-direction: column;
+}
+
+.page-verdant .drawer-overlay.active .drawer-panel {
+  transform: translateX(0);
+}
+
+.page-verdant .drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px;
+  border-bottom: 1px solid rgba(47, 62, 46, 0.06);
+}
+
+.page-verdant .drawer-close-btn {
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--primary);
+  opacity: 0.7;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.page-verdant .drawer-close-btn:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.page-verdant .drawer-body-content {
+  padding: 40px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.page-verdant .drawer-article-category {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: block;
+  font-weight: 500;
+}
+
+.page-verdant .drawer-article-title {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 24px;
+  color: var(--primary);
+}
+
+.page-verdant .drawer-article-img {
+  height: 240px;
+  margin-bottom: 30px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.page-verdant .drawer-article-text p {
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+/* ==========================================
+   TOAST SYSTEM
+   ========================================== */
+.page-verdant .toast-container {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.page-verdant .toast {
+  background-color: var(--primary);
+  color: var(--bg);
+  padding: 16px 24px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  opacity: 0;
+  transform: translateY(-20px) scale(0.95);
+  animation: verdant-toastFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: auto;
+}
+
+@keyframes verdant-toastFadeIn {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.page-verdant .toast.fade-out {
+  animation: verdant-toastFadeOut 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes verdant-toastFadeOut {
+  to { opacity: 0; transform: translateY(-10px) scale(0.95); }
+}
+
+.page-verdant .toast-check-icon {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5px;
+}
+
+/* Reduced Motion: shorten/disable hero zoom, drawer slide, toast fade, quiz reveal */
+@media (prefers-reduced-motion: reduce) {
+  .page-verdant {
+    scroll-behavior: auto;
+  }
+
+  .page-verdant .img-hover-container img,
+  .page-verdant .drawer-panel,
+  .page-verdant .add-to-bag-btn,
+  .page-verdant .quiz-option-arrow,
+  .page-verdant .gold-underline::after,
+  .page-verdant .wishlist-btn svg,
+  .page-verdant .registry-submit-arrow,
+  .page-verdant .newsletter-submit-btn,
+  .page-verdant .drawer-close-btn {
+    transition-duration: 0.01ms !important;
+  }
+
+  .page-verdant .img-hover-container:hover img {
+    transform: none;
+  }
+
+  .page-verdant .wishlist-btn:hover svg,
+  .page-verdant .registry-submit-arrow:hover,
+  .page-verdant .newsletter-submit-btn:hover {
+    transform: none;
+  }
+
+  .page-verdant .toast,
+  .page-verdant .toast.fade-out,
+  .page-verdant .quiz-results-box,
+  .page-verdant .registry-input-wrapper {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
