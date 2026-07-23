@@ -973,7 +973,7 @@ export const homeMarkup = `
           </div>
           <div class="founder-story-text">
             <p class="founder-story-quote">
-              "Calibre Studio was born out of frustration with the digital landscape. I saw too many brands forced to choose between design agencies that don't understand conversion mechanics, and developers who don't appreciate brand identity. We started this studio to bridge that gap—combining world-class aesthetics with extreme code efficiency to build digital channels that drive measurable business outcomes."
+              "I kept seeing the same split: design studios that ship a beautiful mockup with no idea how it'll actually convert, and developers who can wire up anything but flatten the brand in the process. Calibre Studio exists to close that gap — one person handling both the visual system and the code behind it, so nothing gets lost in the handoff between them."
             </p>
             <p style="color: var(--text-secondary); font-size: 14.5px;">
               Every project runs through the same three checks before it ships: does the visual system hold up against
