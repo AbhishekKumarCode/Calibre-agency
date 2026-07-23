@@ -1047,67 +1047,64 @@ export const homeMarkup = `
       </div>
     </section>
 
-    <!-- TESTIMONIALS SECTION -->
+    <!-- PROJECT HIGHLIGHTS SECTION -->
     <section class="section-spacing">
       <div class="container">
         <div class="section-header-block reveal-element">
-          <span class="section-eyebrow">TESTIMONIALS</span>
-          <h2 class="section-title">Client Transformations</h2>
+          <span class="section-eyebrow">CASE STUDIES</span>
+          <h2 class="section-title">Project Highlights</h2>
         </div>
 
         <div class="testimonials-list">
-          <!-- Quote 1 Placeholder -->
           <div class="testimonial-item reveal-element"
             style="border-left: 2px dashed var(--border-color); padding-left: 20px;">
-            <span class="testimonial-quote-symbol" style="opacity: 0.1;">“</span>
+            <span class="testimonial-quote-symbol" style="opacity: 0.1;">01</span>
             <div class="testimonial-quote-body">
               <p class="testimonial-quote-text" style="font-style: italic; color: var(--text-secondary);">
-                [Client Testimonial Placeholder: High-growth e-commerce partner reviews active sales volume increases
-                and speed optimizations here after project integration.]
+                Built for a sports retail concept: a full product catalogue with instant, zero-lag visual filtering
+                across category, size and price &mdash; no page reloads, no lag on large item sets.
               </p>
               <div class="testimonial-author-row">
                 <div class="author-line"></div>
                 <div class="testimonial-author-info">
-                  E-Commerce Partner <br>
-                  <span>Verified Retail Brand · New Delhi</span>
+                  Striker Sports &mdash; Concept Build <br>
+                  <span><a href="/striker">View project &rarr;</a></span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Quote 2 Placeholder -->
           <div class="testimonial-item reveal-element"
             style="border-left: 2px dashed var(--border-color); padding-left: 20px;">
-            <span class="testimonial-quote-symbol" style="opacity: 0.1;">“</span>
+            <span class="testimonial-quote-symbol" style="opacity: 0.1;">02</span>
             <div class="testimonial-quote-body">
               <p class="testimonial-quote-text" style="font-style: italic; color: var(--text-secondary);">
-                [Client Testimonial Placeholder: Specialty cafe and hospitality owner details bookings conversion rate
-                lifts and design aesthetics improvements here.]
+                Built for a specialty cafe concept: a frictionless table booking flow designed to cut the steps
+                between landing on the site and a confirmed reservation.
               </p>
               <div class="testimonial-author-row">
                 <div class="author-line"></div>
                 <div class="testimonial-author-info">
-                  Hospitality Partner <br>
-                  <span>Verified Specialty Cafe · Delhi NCR</span>
+                  Brew &amp; Co. &mdash; Concept Build <br>
+                  <span><a href="/brew">View project &rarr;</a></span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Quote 3 Placeholder -->
           <div class="testimonial-item reveal-element"
             style="border-left: 2px dashed var(--border-color); padding-left: 20px;">
-            <span class="testimonial-quote-symbol" style="opacity: 0.1;">“</span>
+            <span class="testimonial-quote-symbol" style="opacity: 0.1;">03</span>
             <div class="testimonial-quote-body">
               <p class="testimonial-quote-text" style="font-style: italic; color: var(--text-secondary);">
-                [Client Testimonial Placeholder: Smart tech and B2B SaaS startup reviews performance speed benefits and
-                design system structures here.]
+                Built for a local grocery concept: direct WhatsApp-based order dispatch, so orders placed on the
+                site land straight in a chat thread the owner already checks all day.
               </p>
               <div class="testimonial-author-row">
                 <div class="author-line"></div>
                 <div class="testimonial-author-info">
-                  SaaS Startup Partner <br>
-                  <span>Verified Healthcare AI Brand</span>
+                  Kirana King &mdash; Concept Build <br>
+                  <span><a href="/kirana">View project &rarr;</a></span>
                 </div>
               </div>
             </div>
