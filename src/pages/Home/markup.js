@@ -43,7 +43,7 @@ export const homeMarkup = `
 
     <!-- RIGHT SIDEBAR -->
     <div class="right-sidebar">
-      <div class="sidebar-follow">Follow Us — Fb. / Lk. / Gh.</div>
+      <div class="sidebar-follow">Follow Us — <a href="https://www.upwork.com/freelancers/~0118882544be59d04b?mp_source=share" target="_blank" rel="noopener noreferrer">Up.</a> / <a href="https://www.linkedin.com/in/abhishek8668" target="_blank" rel="noopener noreferrer">Lk.</a></div>
     </div>
 
     <!-- STICKY HEADER -->
