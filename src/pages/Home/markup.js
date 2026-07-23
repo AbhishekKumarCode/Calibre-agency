@@ -43,7 +43,7 @@ export const homeMarkup = `
 
     <!-- RIGHT SIDEBAR -->
     <div class="right-sidebar">
-      <div class="sidebar-follow">Follow Us — <a href="https://www.upwork.com/freelancers/~0118882544be59d04b?mp_source=share" target="_blank" rel="noopener noreferrer">Up.</a> / <a href="https://www.linkedin.com/in/abhishek8668" target="_blank" rel="noopener noreferrer">Lk.</a></div>
+      <div class="sidebar-follow">Follow Us — <a href="https://www.upwork.com/freelancers/~0118882544be59d04b?mp_source=share" target="_blank" rel="noopener noreferrer">Up.</a> / <a href="https://www.linkedin.com/in/abhishek8668" target="_blank" rel="noopener noreferrer">Lk.</a> / <a href="https://github.com/AbhishekKumarCode" target="_blank" rel="noopener noreferrer">Gh.</a></div>
     </div>
 
     <!-- STICKY HEADER -->
@@ -85,6 +85,7 @@ export const homeMarkup = `
         <div class="mobile-menu-socials">
           <a href="https://www.upwork.com/freelancers/~0118882544be59d04b?mp_source=share" class="mobile-social-link" target="_blank" rel="noopener noreferrer">Upwork</a>
           <a href="https://www.linkedin.com/in/abhishek8668" class="mobile-social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/AbhishekKumarCode" class="mobile-social-link" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </nav>
     </div>
@@ -1354,6 +1355,7 @@ export const homeMarkup = `
         <div class="footer-right">
           <a href="https://www.upwork.com/freelancers/~0118882544be59d04b?mp_source=share" class="footer-social-link" target="_blank" rel="noopener noreferrer">Upwork</a>
           <a href="https://www.linkedin.com/in/abhishek8668" class="footer-social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/AbhishekKumarCode" class="footer-social-link" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
       <!-- CALIBRE watermark -->
