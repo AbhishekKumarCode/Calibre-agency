@@ -966,17 +966,24 @@ export const homeMarkup = `
         <!-- Founder Story Sub-Section -->
         <div class="founder-layout reveal-element"
           style="border-top: var(--stitch-style); margin-top: 60px; padding-top: 60px;">
-          <div class="founder-image-box">
-            <div class="founder-img-placeholder">
-              <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width: 60%; height: 60%;">
-                <circle cx="60" cy="60" r="46" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 5"/>
-                <line x1="60" y1="14" x2="60" y2="34" stroke="var(--accent)" stroke-width="2"/>
-                <line x1="60" y1="86" x2="60" y2="106" stroke="var(--accent)" stroke-width="2"/>
-                <line x1="14" y1="60" x2="34" y2="60" stroke="var(--accent-2)" stroke-width="2"/>
-                <line x1="86" y1="60" x2="106" y2="60" stroke="var(--accent-2)" stroke-width="2"/>
-                <circle cx="60" cy="60" r="18" stroke="var(--accent-2)" stroke-width="1.5"/>
-                <circle cx="60" cy="60" r="3" fill="var(--accent)"/>
-              </svg>
+          <div class="founder-image-box" style="aspect-ratio: unset; padding: 24px; align-items: stretch;">
+            <div style="display: flex; flex-direction: column; justify-content: center; gap: 22px; width: 100%;">
+              <div>
+                <span class="case-detail-label">Based In</span>
+                <div class="case-detail-val" style="font-size: 15px; margin-top: 4px;">New Delhi, India</div>
+              </div>
+              <div>
+                <span class="case-detail-label">Working As</span>
+                <div class="case-detail-val" style="font-size: 15px; margin-top: 4px;">Solo — Design &amp; Development</div>
+              </div>
+              <div>
+                <span class="case-detail-label">Stack</span>
+                <div class="case-detail-val" style="font-size: 15px; margin-top: 4px;">React &middot; Vite &middot; Supabase</div>
+              </div>
+              <div>
+                <span class="case-detail-label">Availability</span>
+                <div class="case-detail-val" style="font-size: 15px; margin-top: 4px; color: var(--accent-2);">Open for new projects</div>
+              </div>
             </div>
           </div>
           <div class="founder-story-text">
