@@ -966,23 +966,35 @@ export const homeMarkup = `
         <!-- Founder Story Sub-Section -->
         <div class="founder-layout reveal-element"
           style="border-top: var(--stitch-style); margin-top: 60px; padding-top: 60px;">
-          <div class="founder-image-box" style="aspect-ratio: unset; padding: 24px; align-items: stretch;">
-            <div style="display: flex; flex-direction: column; justify-content: center; gap: 22px; width: 100%;">
-              <div>
+          <div class="founder-image-box" style="aspect-ratio: unset; padding: 20px; align-items: stretch;">
+            <div class="founder-spec-grid">
+              <div class="founder-spec-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" aria-hidden="true">
+                  <path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/>
+                  <circle cx="12" cy="9.5" r="2.4"/>
+                </svg>
                 <span class="case-detail-label">Based In</span>
-                <div class="case-detail-val" style="font-size: 15px; margin-top: 4px;">New Delhi, India</div>
+                <div class="case-detail-val">New Delhi, India</div>
               </div>
-              <div>
+              <div class="founder-spec-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" aria-hidden="true">
+                  <path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6.5l-3 11"/>
+                </svg>
                 <span class="case-detail-label">Working As</span>
-                <div class="case-detail-val" style="font-size: 15px; margin-top: 4px;">Solo — Design &amp; Development</div>
+                <div class="case-detail-val">Solo — Design &amp; Dev</div>
               </div>
-              <div>
+              <div class="founder-spec-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" aria-hidden="true">
+                  <rect x="3.5" y="4" width="17" height="12" rx="1.5"/>
+                  <path d="M8 20h8M12 16v4"/>
+                </svg>
                 <span class="case-detail-label">Stack</span>
-                <div class="case-detail-val" style="font-size: 15px; margin-top: 4px;">React &middot; Vite &middot; Supabase</div>
+                <div class="case-detail-val">React &middot; Vite &middot; Supabase</div>
               </div>
-              <div>
+              <div class="founder-spec-card founder-spec-card-live">
+                <span class="founder-live-dot" aria-hidden="true"></span>
                 <span class="case-detail-label">Availability</span>
-                <div class="case-detail-val" style="font-size: 15px; margin-top: 4px; color: var(--accent-2);">Open for new projects</div>
+                <div class="case-detail-val" style="color: var(--accent-2);">Open for new projects</div>
               </div>
             </div>
           </div>
