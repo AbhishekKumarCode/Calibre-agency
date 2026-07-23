@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://calibre-agency.calibrestudio.workers.dev/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://calibre-agency.calibrestudio.workers.dev/brew</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://calibre-agency.calibrestudio.workers.dev/kirana</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://calibre-agency.calibrestudio.workers.dev/striker</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://calibre-agency.calibrestudio.workers.dev/verdant</loc>
+    <priority>0.7</priority>
+  </url>
+</urlset>

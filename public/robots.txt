@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://calibre-agency.calibrestudio.workers.dev/sitemap.xml
