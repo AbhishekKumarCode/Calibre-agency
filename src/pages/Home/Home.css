@@ -492,7 +492,6 @@
     }.page-home .hero-bottom-left {
       max-width: 380px;
     }.page-home .hero-desc-copy {
-      font-family: var(--font-modern);
       font-size: 15px;
       line-height: 1.7;
       color: var(--text-secondary);
@@ -2781,7 +2780,7 @@
       border: none;
       padding: 20px 24px;
       text-align: left;
-      font-family: var(--font-modern);
+      font-family: var(--font-body);
       font-size: 15px;
       font-weight: 700;
       color: var(--text-primary);
@@ -2803,7 +2802,7 @@
       overflow: hidden;
       transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
       padding: 0 24px;
-      font-family: var(--font-modern);
+      font-family: var(--font-body);
       font-size: 13.5px;
       color: var(--text-secondary);
       line-height: 1.7;
