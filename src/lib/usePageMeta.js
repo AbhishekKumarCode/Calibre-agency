@@ -30,6 +30,14 @@ export function usePageMeta({ title, description, path }) {
         document.head.appendChild(canonical)
       }
       canonical.setAttribute('href', `${SITE_URL}${path}`)
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'page_view', {
+          page_title: title,
+          page_location: `${SITE_URL}${path}`,
+          page_path: path,
+        })
+      }
     }
   }, [title, description, path])
 }
