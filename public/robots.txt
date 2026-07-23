@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://calibre-agency.calibrestudio.workers.dev/sitemap.xml
+Sitemap: https://craivo.craivo.workers.dev/sitemap.xml

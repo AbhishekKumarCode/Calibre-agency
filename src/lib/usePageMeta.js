@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 // TODO: switch to https://craivo.com once that domain is registered and
 // connected as this Worker's custom domain.
-const SITE_URL = 'https://calibre-agency.calibrestudio.workers.dev'
+const SITE_URL = 'https://craivo.craivo.workers.dev'
 
 function setMetaTag(name, content, attr = 'name') {
   let tag = document.querySelector(`meta[${attr}="${name}"]`)
