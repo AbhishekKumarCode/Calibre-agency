@@ -1,6 +1,6 @@
-# Calibre Studio
+# Craivo
 
-React + Vite site for Calibre Studio: the agency homepage plus four client project pages (Brew & Co., Kirana King, Striker Sports, Verdant Living).
+React + Vite site for Craivo: the agency homepage plus four client project pages (Brew & Co., Kirana King, Striker Sports, Verdant Living).
 
 ## Structure
 

@@ -6,8 +6,8 @@ import { usePageMeta } from '../../lib/usePageMeta.js'
 
 function Kirana() {
   usePageMeta({
-    title: 'Kirana King — Local Grocery Site Case Study | Calibre Studio',
-    description: 'A local grocery store concept site built by Calibre Studio, routing orders straight into a WhatsApp chat thread the owner already checks all day.',
+    title: 'Kirana King — Local Grocery Site Case Study | Craivo',
+    description: 'A local grocery store concept site built by Craivo, routing orders straight into a WhatsApp chat thread the owner already checks all day.',
     path: '/kirana',
   })
 

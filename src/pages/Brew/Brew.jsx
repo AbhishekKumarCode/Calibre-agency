@@ -6,8 +6,8 @@ import { usePageMeta } from '../../lib/usePageMeta.js'
 
 function Brew() {
   usePageMeta({
-    title: 'Brew & Co. — Cafe Booking Site Case Study | Calibre Studio',
-    description: 'A specialty cafe concept site built by Calibre Studio, featuring a frictionless table-booking flow designed to cut steps between landing and confirmed reservation.',
+    title: 'Brew & Co. — Cafe Booking Site Case Study | Craivo',
+    description: 'A specialty cafe concept site built by Craivo, featuring a frictionless table-booking flow designed to cut steps between landing and confirmed reservation.',
     path: '/brew',
   })
 

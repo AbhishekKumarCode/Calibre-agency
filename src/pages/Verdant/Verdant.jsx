@@ -6,8 +6,8 @@ import { usePageMeta } from '../../lib/usePageMeta.js'
 
 function Verdant() {
   usePageMeta({
-    title: 'Verdant Living — Home Decor Site Case Study | Calibre Studio',
-    description: 'A home decor and lifestyle brand concept site built by Calibre Studio, designed on a distinct layout paradigm from Calibre\'s other project builds.',
+    title: 'Verdant Living — Home Decor Site Case Study | Craivo',
+    description: 'A home decor and lifestyle brand concept site built by Craivo, designed on a distinct layout paradigm from Craivo\'s other project builds.',
     path: '/verdant',
   })
 

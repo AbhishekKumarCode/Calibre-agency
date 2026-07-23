@@ -1,5 +1,9 @@
 import { useEffect } from 'react'
 
+// TODO: switch to https://craivo.com once that domain is registered and
+// connected as this Worker's custom domain.
+const SITE_URL = 'https://calibre-agency.calibrestudio.workers.dev'
+
 function setMetaTag(name, content, attr = 'name') {
   let tag = document.querySelector(`meta[${attr}="${name}"]`)
   if (!tag) {
@@ -17,7 +21,7 @@ export function usePageMeta({ title, description, path }) {
     setMetaTag('og:title', title, 'property')
     setMetaTag('og:description', description, 'property')
     if (path) {
-      setMetaTag('og:url', `https://calibre-agency.calibrestudio.workers.dev${path}`, 'property')
+      setMetaTag('og:url', `${SITE_URL}${path}`, 'property')
 
       let canonical = document.querySelector('link[rel="canonical"]')
       if (!canonical) {
@@ -25,7 +29,7 @@ export function usePageMeta({ title, description, path }) {
         canonical.setAttribute('rel', 'canonical')
         document.head.appendChild(canonical)
       }
-      canonical.setAttribute('href', `https://calibre-agency.calibrestudio.workers.dev${path}`)
+      canonical.setAttribute('href', `${SITE_URL}${path}`)
     }
   }, [title, description, path])
 }

@@ -49,7 +49,7 @@ export const homeMarkup = `
     <!-- STICKY HEADER -->
     <header class="header">
       <div class="container nav-container">
-        <a href="#" class="nav-logo" aria-label="Calibre Studio Homepage">CALIBRE STUDIO</a>
+        <a href="#" class="nav-logo" aria-label="Craivo Homepage">CRAIVO</a>
 
 
         <div class="nav-links-wrapper">
@@ -937,7 +937,7 @@ export const homeMarkup = `
       <div class="container">
         <div class="about-layout">
           <div class="about-left reveal-element">
-            <span class="section-eyebrow">ABOUT CALIBRE STUDIO</span>
+            <span class="section-eyebrow">ABOUT CRAIVO</span>
             <h2 class="about-headline">An engineering-led digital studio focused on revenue.</h2>
             <p class="about-body">
               We design and build bespoke digital experiences that serve a single purpose: driving active customer
@@ -1000,7 +1000,7 @@ export const homeMarkup = `
           </div>
           <div class="founder-story-text">
             <p class="founder-story-quote">
-              "I kept seeing the same split: design studios that ship a beautiful mockup with no idea how it'll actually convert, and developers who can wire up anything but flatten the brand in the process. Calibre Studio exists to close that gap — one person handling both the visual system and the code behind it, so nothing gets lost in the handoff between them."
+              "I kept seeing the same split: design studios that ship a beautiful mockup with no idea how it'll actually convert, and developers who can wire up anything but flatten the brand in the process. Craivo exists to close that gap — one person handling both the visual system and the code behind it, so nothing gets lost in the handoff between them."
             </p>
             <p style="color: var(--text-secondary); font-size: 14.5px;">
               Every project runs through the same three checks before it ships: does the visual system hold up against
@@ -1011,7 +1011,7 @@ export const homeMarkup = `
             </p>
             <div class="founder-name">
               Abhishek Kumar
-              <div class="founder-title">Founder &amp; Creative Director, Calibre Studio</div>
+              <div class="founder-title">Founder &amp; Creative Director, Craivo</div>
             </div>
           </div>
         </div>
@@ -1374,7 +1374,7 @@ export const homeMarkup = `
       </div>
       <div class="container footer-container">
         <div class="footer-left">
-          CALIBRE STUDIO <span>© 2026</span>
+          CRAIVO <span>© 2026</span>
         </div>
         <div class="footer-center">
           PROUDLY BUILT IN DELHI, INDIA
@@ -1385,8 +1385,8 @@ export const homeMarkup = `
           <a href="https://github.com/AbhishekKumarCode" class="footer-social-link" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
-      <!-- CALIBRE watermark -->
-      <div class="footer-backdrop-logo">CALIBRE</div>
+      <!-- CRAIVO watermark -->
+      <div class="footer-backdrop-logo">CRAIVO</div>
     </footer>
 
   </div> <!-- End Canvas Frame -->
@@ -1394,9 +1394,9 @@ export const homeMarkup = `
   <!-- INTRO SHOWCASE MODAL -->
   <div id="showcase-modal" class="modal-overlay">
     <div class="showcase-modal-content">
-      <h3 class="showcase-title">Calibre Studio Profile</h3>
+      <h3 class="showcase-title">Craivo Profile</h3>
       <p class="showcase-text">
-        We design and engineer bespoke, high-converting web structures. At Calibre Studio, we partner with modern
+        We design and engineer bespoke, high-converting web structures. At Craivo, we partner with modern
         brands, wholesale B2B distributors, and luxury establishments to turn digital storefronts into high-converting
         revenue channels.
       </p>

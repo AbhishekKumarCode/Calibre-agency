@@ -6,8 +6,8 @@ import { usePageMeta } from '../../lib/usePageMeta.js'
 
 function Home() {
   usePageMeta({
-    title: 'Calibre Studio — High-Conversion Websites for Small Brands',
-    description: 'Calibre Studio designs and builds conversion-focused websites for cafes, retail, grocery, and lifestyle brands — one person handling both the design and the code, end to end.',
+    title: 'Craivo — High-Conversion Websites for Small Brands',
+    description: 'Craivo designs and builds conversion-focused websites for cafes, retail, grocery, and lifestyle brands — one person handling both the design and the code, end to end.',
     path: '/',
   })
 

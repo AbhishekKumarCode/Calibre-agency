@@ -6,8 +6,8 @@ import { usePageMeta } from '../../lib/usePageMeta.js'
 
 function Striker() {
   usePageMeta({
-    title: 'Striker Sports — Retail Filtering Site Case Study | Calibre Studio',
-    description: 'A sports retail concept site built by Calibre Studio, with instant, zero-lag visual product filtering across category, size, and price.',
+    title: 'Striker Sports — Retail Filtering Site Case Study | Craivo',
+    description: 'A sports retail concept site built by Craivo, with instant, zero-lag visual product filtering across category, size, and price.',
     path: '/striker',
   })
 
