@@ -105,6 +105,7 @@
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      display: flow-root;
     }
 
     /* Background Grid Guide Lines Overlay */.page-home .grid-overlay {
