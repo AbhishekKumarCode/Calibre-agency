@@ -7,6 +7,7 @@ const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const EMAILJS_WELCOME_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_WELCOME_TEMPLATE_ID
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 export async function submitContactForm({ name, email, project, projectLabel, budget, budgetLabel, message }) {
@@ -41,6 +42,23 @@ export async function submitContactForm({ name, email, project, projectLabel, bu
     }),
   })
 
-  const [dbResult] = await Promise.allSettled([insertToSupabase, sendEmail])
+  const sendWelcomeEmail = fetch('https://api.emailjs.com/api/v1.0/email/send', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      service_id: EMAILJS_SERVICE_ID,
+      template_id: EMAILJS_WELCOME_TEMPLATE_ID,
+      user_id: EMAILJS_PUBLIC_KEY,
+      template_params: {
+        name,
+        email,
+        service: projectLabel,
+        budget: budgetLabel,
+        message,
+      },
+    }),
+  })
+
+  const [dbResult] = await Promise.allSettled([insertToSupabase, sendEmail, sendWelcomeEmail])
   return dbResult.status === 'fulfilled' && dbResult.value.ok
 }
