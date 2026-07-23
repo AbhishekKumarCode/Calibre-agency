@@ -968,7 +968,15 @@ export const homeMarkup = `
           style="border-top: var(--stitch-style); margin-top: 60px; padding-top: 60px;">
           <div class="founder-image-box">
             <div class="founder-img-placeholder">
-              <span>Calibre Director</span>
+              <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width: 60%; height: 60%;">
+                <circle cx="60" cy="60" r="46" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 5"/>
+                <line x1="60" y1="14" x2="60" y2="34" stroke="var(--accent)" stroke-width="2"/>
+                <line x1="60" y1="86" x2="60" y2="106" stroke="var(--accent)" stroke-width="2"/>
+                <line x1="14" y1="60" x2="34" y2="60" stroke="var(--accent-2)" stroke-width="2"/>
+                <line x1="86" y1="60" x2="106" y2="60" stroke="var(--accent-2)" stroke-width="2"/>
+                <circle cx="60" cy="60" r="18" stroke="var(--accent-2)" stroke-width="1.5"/>
+                <circle cx="60" cy="60" r="3" fill="var(--accent)"/>
+              </svg>
             </div>
           </div>
           <div class="founder-story-text">
