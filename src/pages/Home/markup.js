@@ -83,9 +83,8 @@ export const homeMarkup = `
         </ul>
         <a href="#contact" class="btn-primary mobile-menu-cta" style="margin-top: 20px;">Book a Free Consultation</a>
         <div class="mobile-menu-socials">
-          <a href="#" class="mobile-social-link">Instagram</a>
-          <a href="#" class="mobile-social-link">LinkedIn</a>
-          <a href="#" class="mobile-social-link">GitHub</a>
+          <a href="https://www.upwork.com/freelancers/~0118882544be59d04b?mp_source=share" class="mobile-social-link" target="_blank" rel="noopener noreferrer">Upwork</a>
+          <a href="https://www.linkedin.com/in/abhishek8668" class="mobile-social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </nav>
     </div>
@@ -1353,9 +1352,8 @@ export const homeMarkup = `
           PROUDLY BUILT IN DELHI, INDIA
         </div>
         <div class="footer-right">
-          <a href="#" class="footer-social-link">Instagram</a>
-          <a href="#" class="footer-social-link">LinkedIn</a>
-          <a href="#" class="footer-social-link">GitHub</a>
+          <a href="https://www.upwork.com/freelancers/~0118882544be59d04b?mp_source=share" class="footer-social-link" target="_blank" rel="noopener noreferrer">Upwork</a>
+          <a href="https://www.linkedin.com/in/abhishek8668" class="footer-social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
       <!-- CALIBRE watermark -->
